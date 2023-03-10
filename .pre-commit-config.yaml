@@ -1,0 +1,19 @@
+---
+repos:
+  # Notice on hooks:
+  #
+  # All hooks should be local hooks. You can use the "system"
+  # language for tools added to the developer shell.nix environment.
+  #
+  - repo: local
+    hooks:
+      - id: nix-nixpkgs-fmt
+        name: "[nix]      nixpkgs-fmt"
+        entry: nixpkgs-fmt
+        language: system
+        files: \.nix$
+      - id: shell-shellcheck
+        name: "[shell]    shellcheck"
+        entry: shellcheck --exclude=SC1071,SC1090,SC1091
+        language: system
+        types: [shell]
